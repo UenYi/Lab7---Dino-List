@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Lab7</string>
+    <string name="title">Lil' Dinos</string>
+    <string name="detail">Details</string>
+    <string name="dinoWWW">www</string>
+    <string name="dinoAbout">About</string>
+    <string name="me">Author: Uen Yi Cindy Hung</string>
+    <string name="appAbout">A list of dinosaurs and when you click on one, a more details and a large picture of the dinosaur will appear.</string>
+
+    <string-array name="dinoNames">
+        <item>Alamosaurus </item>
+        <item>Albertosaurus </item>
+        <item>Allosaurus </item>
+        <item>Anchiceratops </item>
+        <item>Ankylosaurus </item>
+        <item>Apatosaurus</item>
+        <item>Aucasaurus </item>
+        <item>Avaceratops </item>
+        <item>Baryonyx </item>
+        <item>Brachiosaurus </item>
+    </string-array>
+
+    <string-array name="dinoInfos">
+        <item>This drawing shows the possible appearance of Alamosaurus, a dinosaur from the late Cretaceous Period that reached up to 21 metres (69 feet) in length and weighed around 35 tons. Alamosaurus was a classic Sauropod with a long neck and tail that lived in what is now North America.</item>
+        <item>This CGI drawing shows the possible appearance of Albertosaurus, a dinosaur from the late Cretaceous Period. Albertosaurus was a predator that moved on two legs, living in an area that now makes up western North America. While smaller than other Tyrannosaurids such as the well known Tyrannosaurus rex, Albertosaurus still grew to a length of up to 9 metres (30 feet) and a weight of around 1.4 tons.</item>
+        <item>This CGI drawing shows the possible appearance of Allosaurus, a dinosaur from the late Jurassic Period (around 150 million years ago). First described back in 1877, Allosaurus become one of the first well known dinosaurs. It was a carnivore (meat eater) and weighed around 2.3 tons. For more information on this interesting dinosaur check out our Allosaurus facts page.</item>
+        <item>This drawing shows the possible appearance of Anchiceratops, a dinosaur from the late Cretaceous Period (around 70 million years ago). Anchiceratops was a herbivore (plant eater) that walked on four legs and featured three horns on its face (much like other Ceratopsids). Named in 1914, Anchiceratops reached up to 6 metres (20 feet) in length and lived in what is now western North America.</item>
+        <item>This drawing shows the possible appearance of Ankylosaurus, a dinosaur from the late Cretaceous Period (around 66 million years ago). Ankylosaurus was a large herbivore (plant eater) that was protected by body armor, large plates of bone embedded into the skin. For more information on this interesting dinosaur check out our Ankylosaurus facts page.</item>
+        <item>This sketch shows what an Apatosaurus (also known a Brontosaurus) might have looked like living in its environment during the Jurassic Period, around 150 million years ago. The illustration shows the Apatosaurus and two smaller dinosaurs drinking water. For more information on this interesting dinosaur check out our Apatosaurus facts page.</item>
+        <item>This drawing shows the possible appearance of Aucasaurus, a Theropod dinosaur that was related to the Carnotaurus. Three specimens can be seen in the picture, in a variety of poses. The Aucasaurus featured very small arms and lived in an area of South America that is now Argentina.</item>
+        <item>This drawing shows the possible appearance of Avaceratops, a dinosaur from the late Cretaceous Period. The first fossil remains of Avaceratops were found in 1981 in Montana, USA. Like other Ceratopsian dinosaurs, Avaceratops was a herbivore (plant eater).</item>
+        <item>This CGI drawing shows the possible appearance of Baryonyx, a dinosaur from the early Cretaceous Period (around 130 million years ago). Baryonyx featured a number of adaptations which helped it hunt and eat fish, it is one of the few known fish eating dinosaurs. Baryonyx was around 8.5 metres (28 feet) in length and could weigh over 1700 kg (3700 lb).</item>
+        <item>This drawing shows the possible appearance of Brachiosaurus, a Sauropod dinosaur from the late Jurassic Period (around 150 million years ago). The Brachiosaurus was a herbivore (plant eater) and lived in North America. For more information on this interesting dinosaur check out our Brachiosaurus facts page.</item>
+    </string-array>
+
+</resources>

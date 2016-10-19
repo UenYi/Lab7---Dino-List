@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/dinoWWW"
+        android:showAsAction="ifRoom"
+        android:title="@string/dinoWWW" />
+
+    <item
+        android:id="@+id/dinoAbout"
+        android:showAsAction="ifRoom"
+        android:title="@string/dinoAbout"/>
+
+</menu>
