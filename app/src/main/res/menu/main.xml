@@ -1,13 +1,16 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
 
-    <item
-        android:id="@+id/dinoWWW"
-        android:showAsAction="ifRoom"
-        android:title="@string/dinoWWW" />
+        <item
+            android:id="@+id/dinoWWW"
+            android:showAsAction="ifRoom"
+            android:title="@string/dinoWWW"
+            tools:ignore="AppCompatResource"/>
 
-    <item
-        android:id="@+id/dinoAbout"
-        android:showAsAction="ifRoom"
-        android:title="@string/dinoAbout"/>
-
+        <item
+            android:id="@+id/dinoAbout"
+            android:showAsAction="ifRoom"
+            android:title="@string/dinoAbout"
+            tools:ignore="AppCompatResource"/>
 </menu>
