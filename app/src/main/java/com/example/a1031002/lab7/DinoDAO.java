@@ -18,37 +18,35 @@ public class DinoDAO extends SQLiteOpenHelper {
     public static final String COL_ID = "_id";
     public static final String COL_NAME = "Name";
     public static final String COL_INFO = "Info";
-    public static final String COL_IMG_ID = "Image id";
-    public static final String COL_ICON_ID = "Icon id";
+    public static final String COL_IMG_ID = "Image_id";
+    public static final String COL_ICON_ID = "Icon_id";
 
     private static final String DATABASE_NAME = "dino.db";
     private static final int DATABASE_VERSION = 1;
     private static DinoDAO dao = null;
 
-    private String[] dinoNames, dinoInfos;
-    private int[] dinoPics, dinoIcons;
     private Context context;
 
-    private SQLiteDatabase readDB;
-    private SQLiteDatabase writeDB;
 
     private static final String DB_CREATE = "create table " +
-            TABLE_DINO + "(" + COL_ID + " integer primary key autoincrement, "
-            + COL_NAME + " text, " + COL_INFO + " text, " + COL_IMG_ID + " integer, " + COL_ICON_ID + " integer);";
+            TABLE_DINO + " ( " +
+            COL_ID + " integer primary key autoincrement, " +
+            COL_NAME + " text, " +
+            COL_INFO + " text, " +
+            COL_IMG_ID + " integer, " +
+            COL_ICON_ID + " integer );";
 
-    public DinoDAO(Context context) {
+    private DinoDAO(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
-        this.readDB = getReadableDatabase();
-        this.writeDB = getWritableDatabase();
     }
 
     public static DinoDAO getDao(Context context) {
         Log.i(TAG, "getDao");
-
+        dao = null;
         if (dao == null) {
-            dao = new DinoDAO(context.getApplicationContext());
             Log.i(TAG, "getDao, dao == null");
+            dao = new DinoDAO(context.getApplicationContext());
         }
 
         return dao;
@@ -57,12 +55,26 @@ public class DinoDAO extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         Log.i(TAG, "DinoDAO - onCreate");
-        sqLiteDatabase.execSQL(DB_CREATE);
+       popDB(sqLiteDatabase);
+    }
 
-        dinoNames = this.context.getResources().getStringArray(R.array.dinoNames);
-        dinoInfos = this.context.getResources().getStringArray(R.array.dinoInfos);
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
+        Log.w(TAG, DinoDAO.class.getName() + "Upgrading DB from version " +
+                oldVersion + " to " + newVersion + ", which will destroy all old data");
 
-        dinoPics = new int[]{
+        sqLiteDatabase.execSQL("DROP TABLE " + TABLE_DINO);
+        Log.i(TAG, "DinoDAO - onUpgrade");
+        popDB(sqLiteDatabase);
+    }
+
+    private void popDB(SQLiteDatabase db) {
+        Log.d(TAG, "onOpen called");
+        db.execSQL(DB_CREATE);
+        String[] dinoNames = this.context.getResources().getStringArray(R.array.dinoNames);
+        String[] dinoInfos = this.context.getResources().getStringArray(R.array.dinoInfos);
+
+        int[] dinoPics = new int[]{
                 R.drawable.alamosaurus,
                 R.drawable.albertosaurus,
                 R.drawable.allosaurus,
@@ -75,7 +87,7 @@ public class DinoDAO extends SQLiteOpenHelper {
                 R.drawable.brachiosaurusdrawing
         };
 
-        dinoIcons = new int[]{
+        int[] dinoIcons = new int[]{
                 R.drawable.alamosaurus_icon,
                 R.drawable.albertosaurus_icon,
                 R.drawable.allosaurus_icon,
@@ -89,22 +101,18 @@ public class DinoDAO extends SQLiteOpenHelper {
         };
 
         for (int i = 0; i < dinoNames.length; i++) {
-            insertNewDino(dinoNames[i], dinoInfos[i], dinoPics[i], dinoIcons[i]);
+            insertNewDino(dinoNames[i], dinoInfos[i], dinoPics[i], dinoIcons[i], db);
+            Log.d(TAG, "onOpen after insert");
         }
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-        Log.w(TAG, DinoDAO.class.getName() + "Upgrading DB from version " +
-                oldVersion + " to " + newVersion + ", which will destroy all old data");
-
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_DINO);
-        Log.i(TAG, "DinoDAO - onUpgrade");
-        onCreate(sqLiteDatabase);
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
     }
 
-    public long insertNewDino(String name, String info, int imgID, int iconID) {
-        Log.i(TAG, "insertNewDino");
+    public long insertNewDino(String name, String info, int imgID, int iconID, SQLiteDatabase db) {
+        Log.d(TAG, "insertNewDino - data: " + name + ", " + info + ", " + imgID + ", " + iconID);
 
         ContentValues cv = new ContentValues();
 
@@ -113,14 +121,12 @@ public class DinoDAO extends SQLiteOpenHelper {
         cv.put(COL_IMG_ID, imgID);
         cv.put(COL_ICON_ID, iconID);
 
-        long result = this.writeDB.insert(TABLE_DINO, null, cv);
-
-        return result;
+        Log.d(TAG, "insertNewDino - writableDB: " + db);
+        return db.insert(TABLE_DINO, null, cv);
     }
 
     public Cursor getDinos() {
-        return this.readDB.query(TABLE_DINO, null, null, null, null, null, null);
+        Log.d(TAG, "getDino Called");
+        return getReadableDatabase().query(TABLE_DINO, null, null, null, null, null, null);
     }
-
-
 }

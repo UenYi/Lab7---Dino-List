@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.MenuItemHoverListener;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,13 +19,15 @@ public class MainActivity extends AppCompatActivity {
     private String[] dinoNames, dinoInfos;
     private int[] dinoPics, dinoIcon;
     private DinoDAO dinoDAO;
+    private String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dinoDAO = DinoDAO.getDao(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dinoDAO = DinoDAO.getDao(this);
         Cursor cursor = dinoDAO.getDinos();
         int ctr = 0;
 
@@ -46,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         cursor.close();
-        dinoDAO.close();
 
         lv.setAdapter(new DinoAdapter(this, dinoNames, dinoPics, dinoInfos, dinoIcon));
     }
