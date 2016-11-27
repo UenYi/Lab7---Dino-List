@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lab7</string>
+    <string name="app_name">Lab7 - Little Dinos</string>
     <string name="title">Lil\' Dinos</string>
     <string name="detail">Details</string>
     <string name="dinoWWW">www</string>
@@ -33,4 +33,7 @@
         <item>This drawing shows the possible appearance of Brachiosaurus, a Sauropod dinosaur from the late Jurassic Period (around 150 million years ago). The Brachiosaurus was a herbivore (plant eater) and lived in North America. For more information on this interesting dinosaur check out our Brachiosaurus facts page.</item>
     </string-array>
 
+
+    <string name="loading">Loading...</string>
+    <string name="loadMsg">Please wait, we are loading the data.</string>
 </resources>
